@@ -37,7 +37,7 @@
   		$.each(data, function(index,obj){
   			listHtml +="<tr align='center'>";
   	  		listHtml +="<td>"+obj.idx+"</td>";
-  	  		listHtml +="<td><a href='javascript:goContent("+obj.idx+")'>"+obj.title+"</a></td>";
+  	  		listHtml +="<td id='t"+obj.idx+"'><a href='javascript:goContent("+obj.idx+")'>"+obj.title+"</a></td>";
   	  		listHtml +="<td>"+obj.writer+"</td>";
   	  		listHtml +="<td>"+obj.indate+"</td>";
   	  		listHtml +="<td>"+obj.count+"</td>";
@@ -46,9 +46,9 @@
   	  		listHtml +="<tr id='c"+obj.idx+"' style='display:none'>";
   	  		listHtml +="<td>내용</td>";
   	  		listHtml +="<td colspan='4'>";
-  	  		listHtml +="<textarea rows='7' readonly class='form-control'>"+obj.content+"</textarea>";  	  
+  	  		listHtml +="<textarea id='ta"+obj.idx+"' rows='7' readonly class='form-control'>"+obj.content+"</textarea>";  	  
   	  		listHtml +="<br/>"
-  	  		listHtml +="<button class='btn btn-success btn-sm'>수정화면</button>&nbsp;"
+  	  		listHtml +="<span id='ub"+obj.idx+"'><button class='btn btn-success btn-sm' onclick='goUpdateForm("+obj.idx+")'>수정화면</button></span>&nbsp;"
   	  		listHtml +="<button class='btn btn-warning btn-sm' onclick='goDelete("+obj.idx+")'>삭제</button>&nbsp;"
   	  		listHtml +="</td>";
   	  		listHtml +="</tr>";
@@ -70,6 +70,7 @@
   		$("#wform").css("display","block");
   	}
   	function goList(){
+  		console.log('goList작동!')
   		$("#view").css("display","block");
   		$("#wform").css("display","none");
   	}
@@ -98,7 +99,9 @@
   	
   	function goContent(idx){
   		if($("#c"+idx).css("display")=="none"){
-	  		$("#c"+idx).css("display","table-row");//보이게		
+	  		$("#c"+idx).css("display","table-row");//보이게	
+  			$("#ta"+idx).attr("readonly",true);
+
   		}else{
   			$("#c"+idx).css("display","none");//감추게	
   		}
@@ -112,7 +115,27 @@
   			error:function(){alert("error");}
   		});
   	}
-  	
+  	function goUpdateForm(idx){
+		$("#ta"+idx).attr("readonly",false);//1
+		
+		var title = $("#t"+idx).text();
+		var newInput = "<input type='text' id='nt"+idx+"' class='form-control' value='"+title+"'/>";
+  		$("#t"+idx).html(newInput);//2
+  		
+  		var newButton="<button class='btn btn-primary btn-sm' onclick='goUpdate("+idx+")'>수정</button>";
+  		$("#ub"+idx).html(newButton);//3
+  	}
+  	function goUpdate(idx){
+  		var title = $("#nt"+idx).val();
+  		var content = $("#ta"+idx).val();
+  		$.ajax({
+  			url:"boardUpdate.do",
+  			type:"post",
+  			data:{"idx":idx,"title":title,"content":content},
+  			success:loadList,
+  			error:function(){alert("error");}
+  		});
+  	}
   </script>
 </head>
 <body> 
