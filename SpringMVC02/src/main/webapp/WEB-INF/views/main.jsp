@@ -82,7 +82,7 @@
   		//form 안의 데이터를 직렬화 시켜서 fData에 담아줌
   		var fData = $("#frm").serialize();
 		$.ajax({
-			url : "boardInsert.do",
+			url : "board/new",
 			type : "post",
 			data : fData,
 			success : loadList,
