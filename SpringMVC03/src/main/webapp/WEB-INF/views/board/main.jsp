@@ -161,6 +161,7 @@
   </script>
 </head>
 <body> 
+<jsp:include page="../common/header.jsp"></jsp:include>
  
 <div class="container">
   <h2>Spring MVC03</h2>
