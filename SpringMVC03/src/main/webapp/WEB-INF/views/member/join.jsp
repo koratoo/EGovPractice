@@ -11,6 +11,28 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  	function registerCheck(){
+  		var memID = $("#memID").val();
+  		$.ajax({
+  			url:"${contextPath}/memRegisterCheck.do",
+  			type:"get",
+  			data:{"memID":memID},
+  			success:function(result){
+  				//중복유무 출력(result=1 : 사용할 수 있는 아이디, 0:사용할 수 없는 아이디)
+  				if(result==1){
+  					$("#checkType").attr("class","modal-content panel-success")
+  					$("#checkMessage").html("사용할 수 있는 아이디입니다.");
+  				}else{
+  					$("#checkType").attr("class","modal-content panel-warning")
+  					$("#checkMessage").html("사용할 수 없는 아이디입니다.");
+  				}
+  				$("#myModal").modal("show");
+  			},
+  			error:function(){alert("error");}
+  		});
+  	}
+  </script>
 </head>
 <body>
 <div class="container">
@@ -24,7 +46,7 @@
     			<tr>
     				<td style="width:110px;vertical-align:middle;">아이디</td>
     				<td><input id="memID" name="memID" class="form-control" type="text" maxlength="20" placeholder="아이디를 입력하세요."/></td>
-    				<td style="width:110px;"><button class="btn btn-primary btn-sm" onclick="registerCheck()">중복확인</button></td>
+    				<td style="width:110px;"><button type="button" class="btn btn-primary btn-sm" onclick="registerCheck()">중복확인</button></td>
     			</tr> 
     			<tr>
     				<td style="width:110px;vertical-align:middle;">비밀번호</td>
@@ -69,6 +91,30 @@
     		</table>
     	</form>
     </div>
+    <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+	    <div  class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div id="checkType" class="modal-content">
+	        <div class="modal-header panel-heading">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">메시지 확인</h4>
+	        </div>
+	        <div class="modal-body">
+	          <p id="checkMessage">Some text in the modal.</p>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+  
+    
+    
+    
     <div class="panel-footer">스프1탄_인프런(김지성)</div>
   </div>
 </div>
