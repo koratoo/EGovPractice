@@ -70,8 +70,8 @@
   <div class="panel panel-default">
     <div class="panel-heading">회원가입</div>
     <div class="panel-body">
-    	<input type="hidden" id="memPassword" name="memPassword" />
     	<form name="frm" method="post" action="${contextPath}/memRegister.do">
+    	<input type="hidden" id="memPassword" name="memPassword" />
     		<table class="table table-bordered" style="text-align:center; border:1px solid #dddddd;">
     			<tr>
     				<td style="width:110px;vertical-align:middle;">아이디</td>
@@ -121,7 +121,7 @@
     		</table>
     	</form>
     </div>
-    <!-- Modal -->
+      <!-- Modal -->
 	  <div class="modal fade" id="myModal" role="dialog">
 	    <div  class="modal-dialog">
 	    
@@ -141,33 +141,28 @@
 	      
 	    </div>
 	  </div>
-    <!-- Modal 실패메세지 출력-->
-	  <div class="modal fade" id="myMessage" role="dialog">
-	    <div class="modal-dialog">
-	    
-	      <!-- Modal content-->
-	      <div id="messageType" class="modal-content">
-	        <div class="modal-header panel-heading">
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 class="modal-title">${msgType}</h4>
-	        </div>
-	        <div class="modal-body">
-	          <p>${msg}</p>
-	        </div>
-	        <div class="modal-footer">
-	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        </div>
-	      </div>
-	      
-	    </div>
-	  </div>
-  
-    
-    
-    
-    <div class="panel-footer">스프1탄_인프런(김지성)</div>
-  </div>
-</div>
-
+	      <!-- Modal 실패메세지 출력-->
+		  <div class="modal fade" id="myMessage" role="dialog">
+		    <div class="modal-dialog">
+		    
+		      <!-- Modal content-->
+		      <div id="messageType" class="modal-content">
+		        <div class="modal-header panel-heading">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title">${msgType}</h4>
+		        </div>
+		        <div class="modal-body">
+		          <p>${msg}</p>
+		        </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div>
+		      </div>
+		      
+		    </div>
+		  </div>
+	    </div><!-- panel-default end -->
+ 	   <div class="panel-footer">스프1탄_인프런(김지성)</div>
+	  </div><!-- container end -->
 </body>
 </html>
