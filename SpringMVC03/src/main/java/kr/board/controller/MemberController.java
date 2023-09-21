@@ -108,5 +108,15 @@ public class MemberController {
 		}
 	}
 	
+	//회원정보 수정화면
+	@RequestMapping("/memUpdateForm.do")
+	public String memUpdateForm() {
+		return "member/memUpdateForm";
+	}
+	//회원정보 수정화면
+	@RequestMapping("/memUpdate.do")
+	public String memUpdate() {
+		return "member/memUpdateForm";
+	}
 	
 }
