@@ -10,5 +10,6 @@ public interface MemberMapper {
 	public Member registerCheck(String memID);
 	public int register(Member m);
 	public Member memLogin(Member mvo);//로그인 체크
+	public int memUpdate(Member m);
 }
 

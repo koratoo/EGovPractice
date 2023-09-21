@@ -13,6 +13,7 @@ insert into myboard (title,content,writer) values ('게시판연습2','게시판
 insert into myboard (title,content,writer) values ('게시판연습3','게시판연습3','관리자3');
 
 select * from myboard;
+select * from mem_tbl;
 
 create table mem_tbl(
 	memIdx int auto_increment,
