@@ -123,26 +123,6 @@
     		</table>
     	</form>
     </div>
-      <!-- Modal -->
-	  <div class="modal fade" id="myModal" role="dialog">
-	    <div  class="modal-dialog">
-	    
-	      <!-- Modal content-->
-	      <div id="checkType" class="modal-content">
-	        <div class="modal-header panel-heading">
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 class="modal-title">메시지 확인</h4>
-	        </div>
-	        <div class="modal-body">
-	          <p id="checkMessage">Some text in the modal.</p>
-	        </div>
-	        <div class="modal-footer">
-	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        </div>
-	      </div>
-	      
-	    </div>
-	  </div>
 	      <!-- Modal 실패메세지 출력-->
 		  <div class="modal fade" id="myMessage" role="dialog">
 		    <div class="modal-dialog">

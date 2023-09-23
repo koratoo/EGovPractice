@@ -155,5 +155,10 @@ public class MemberController {
 		
 	}
 	
+	//회원사진 등록화면
+	@RequestMapping("/memImageForm.do")
+	public String memImageForm() {
+		return "member/memImageForm";
+	}
 	
 }

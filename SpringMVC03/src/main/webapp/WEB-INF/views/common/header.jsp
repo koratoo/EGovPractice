@@ -36,9 +36,9 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">회원관리 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="${contextPath}/memUpdateForm.do">회원정보수정</a></li>
-            <li><a href="#">프로필사진등록</a></li>
-            <li><a href="${contextPath}/memLogout.do">로그아웃</a></li>
+            <li><a href="${contextPath}/memUpdateForm.do"><span class="glyphicon glyphicon-wrench">&nbsp;회원정보수정</a></li>
+            <li><a href="${contextPath}/memImageForm.do"><span class="glyphicon glyphicon-picture">&nbsp;사진등록</a></li>
+            <li><a href="${contextPath}/memLogout.do"><span class="glyphicon glyphicon-log-out">&nbsp;로그아웃</a></li>
           </ul>
         </li>
       </c:if>
