@@ -140,6 +140,12 @@
   		$.ajax({
   			url:"board/"+idx,
   			type:"delete",
+  			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue)
+			},
+  			success : function(data){
+					$("#cnt"+idx).text(data.count);
+				},
   			success:loadList,
   			error:function(){alert("error");}
   		});
