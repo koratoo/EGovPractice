@@ -46,6 +46,8 @@
     				</td>		
     			</tr> 
     		</table>
+    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    		
     	</form>
     </div>
       <!-- Modal 실패메세지 출력-->

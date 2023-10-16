@@ -30,9 +30,10 @@
             <li><a href="${contextPath}/memUpdateForm.do"><span class="glyphicon glyphicon-wrench">&nbsp;회원정보수정</a></li>
             <li><a href="${contextPath}/memImageForm.do"><span class="glyphicon glyphicon-picture">&nbsp;사진등록</a></li>
             <li><a href="${contextPath}/memLogout.do"><span class="glyphicon glyphicon-log-out">&nbsp;로그아웃</a></li>
+      </c:if> 
           
       <!-- 로그인이 안된상태 -->
-      <c:if test="${empty mvo}">
+     <c:if test="${empty mvo}"> 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">접속하기 <span class="caret"></span></a>
@@ -41,8 +42,7 @@
             <li><a href="${contextPath}/memJoin.do"><span class="glyphicon glyphicon-user">&nbsp;회원가입</span></a></li>
           </ul>
         </li>
-      </c:if>
-          </ul>
+      </ul>
         </li>
       </c:if>
        <c:if test="${!empty mvo}">
