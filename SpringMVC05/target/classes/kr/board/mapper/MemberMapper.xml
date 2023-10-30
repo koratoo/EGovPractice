@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kr.board.mapper.MemberMapper">
+
+	<resultMap type="kr.board.entity.Member" id="memberMap">
+		<id property="memIdx" column="memIdx"/>
+		<id property="memPassword" column="memPassword"/>
+		<id property="memName" column="memName"/>
+		<id property="memAge" column="memAge"/>
+		<id property="memGender" column="memGender"/>
+		<id property="memEmail" column="memEmail"/>
+		<id property="memProfile" column="memProfile"/>
+		<collection property="authList" resultMap="authMap"></collection>
+	</resultMap>
+	
+	<resultMap type="kr.board.entity.AuthVO" id="authMap">
+		<id property="no" column="no"/>
+		<result property="memID" column="memID" />
+		<result property="auth" column="auth" />
+	</resultMap>
+
+	<select id="registerCheck" resultMap="memberMap">
+		select * from mem_tbl where memID=#{memID}
+	</select>
+	
+	<insert id="register" parameterType="kr.board.entity.Member">
+		insert into
+			mem_stbl
+			(
+				memIdx,
+				memID,
+				memPassword,
+				memName,
+				memAge,
+				memGender,
+				memEmail,
+				memProfile
+			)
+			values((select IFNULL(MAX(memId)+1,1) from mem_stbl mem),#{memID},#{memPassword},#{memName},#{memAge},#{memGender},#{memEmail},#{memProfile})
+	</insert>
+	
+	<select id="memLogin" parameterType="kr.board.entity.Member" resultType="kr.board.entity.Member">
+		select * from mem_tbl 
+		where memID=#{memID} and memPassword = #{memPassword}
+	</select>
+	
+	<update id="memUpdate" parameterType="kr.board.entity.Member">
+		update mem_tbl set memPassword=#{memPassword}, memName=#{memName}, memAge=#{memAge},
+		memGender=#{memGender}, memEmail=#{memEmail} where memID=#{memID}
+	</update>
+	
+	<select id="getMember" resultMap="memberMap">
+		SELECT * FROM mem_tbl mem
+		LEFT OUTER JOIN mem_auth auth ON mem.memID = auth.memID
+		WHERE mem.memID=#{memID}
+	</select>
+	
+	<update id="memProfileUpdate" parameterType="kr.board.entity.Member">
+		update mem_tbl set memProfile = #{memProfile} where memID=#{memID}
+	</update>
+	
+	<insert id="authInsert" parameterType="kr.board.entity.AuthVO">
+		insert into mem_auth(memID,auth) values (#{memID},#{auth})
+	</insert>
+</mapper>
